@@ -7,6 +7,7 @@ public class Email {
     private String passWord;
     private String dept;
     private String altEmail;
+    private int passwordLength = 12;
 
     //constructor to receive first and last name
     public Email(String firstName, String lastName){
@@ -15,6 +16,8 @@ public class Email {
         System.out.println("Email Created:" + this.firstName + " " + this.lastName);
         this.dept = getDept();
         System.out.println(this.dept);
+        this.passWord = generatePassword(passwordLength);
+        System.out.println(this.passWord);
     }
 
     //Ask for department
@@ -25,6 +28,14 @@ public class Email {
         if(deptChoice ==1){return "dev";} else if(deptChoice==2){return "qa";}else if(deptChoice==3){return "prod";} else {return "";}
     }
     //generate password
+    private String generatePassword(int passwordLength){
+        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz12345678900!@#$%&()";
+        char[] password = new char[passwordLength];
+        for(int i=0;i<passwordLength;i++){
+            password[i] = passwordSet.charAt((int)(Math.random()*passwordSet.length()));
+        }
+        return new String(password);
+    }
 
     //set mailbox capacity
 
