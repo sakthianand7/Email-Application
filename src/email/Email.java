@@ -28,7 +28,6 @@ public class Email {
     //Ask for department
     private String getDept(){
         System.out.println("Department code : \n\n1 for Development \n2 for QA \n3 for Production \n4 for none \n\nEnter your choice:");
-
         Scanner scanner = new Scanner(System.in);
         int deptChoice = scanner.nextInt();
         scanner.close();
@@ -40,7 +39,7 @@ public class Email {
         char[] password = new char[passwordLength];
         for(int i=0;i<passwordLength;i++){
             //Math.random generate a number between 0 and 1(eg:- 0.9282)
-            password[i] = passwordSet.charAt((int)(Math.random()*passwordSet.length()));
+            password[i] = passwordSet.charAt((int)(Math.random()*(passwordSet.length()-1)));
         }
         return new String(password);
     }
